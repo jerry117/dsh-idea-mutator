@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>灵感变异机 · 给想法一点意外</title>
+  <style>:root{--paper:#f5f4ef;--white:#fffefa;--ink:#252934;--muted:#898a8b;--line:#e3e3dc;--orange:#ed6a3b;--purple:#7764ae;--green:#66846b;--blue:#64859b;--pink:#ba7f90;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none;text-rendering:optimizeLegibility;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;display:flex;min-height:100vh}button,input,textarea{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:wait;opacity:.65}button{color:inherit}button:focus-visible,a:focus-visible{outline:3px solid #ed6a3b99;outline-offset:4px}textarea:focus-visible,input:focus-visible{outline:2px solid #ed6a3b88;outline-offset:3px}button{border:0}button,a{touch-action:manipulation}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.rail{width:220px;flex:none;border-right:1px solid var(--line);padding:35px 20px 24px;display:flex;flex-direction:column;position:fixed;inset:0 auto 0 0;background:#efeee8;z-index:3}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);padding:0 13px}.brand-symbol{font-size:54px;line-height:1;font-weight:850;letter-spacing:-7px;position:relative}.brand-symbol>span{position:absolute;font-size:23px;letter-spacing:0;color:var(--orange);right:-11px;top:0}.brand-word{font-size:15px;font-weight:800;line-height:1.05;letter-spacing:1.4px;padding-top:9px}.brand-word small{font-size:10px;font-weight:500;letter-spacing:2.5px}.rail-caption{font-size:10px;letter-spacing:1.6px;color:#92918b;margin:53px 14px 16px}.nav-item{width:100%;padding:14px 12px;display:flex;gap:11px;align-items:center;text-align:left;background:transparent;font-size:12px;font-weight:550;border-radius:7px;margin-bottom:8px;color:#74756f}.nav-item.active{background:#fffefa;color:var(--ink);box-shadow:0 1px 4px #292d3410}.nav-icon{font-size:19px;width:20px}.nav-item.active .nav-icon{color:var(--orange)}.nav-arrow,.count{margin-left:auto}.count{font-size:10px;padding:2px 5px;border:1px solid #d8d8cf;border-radius:4px}.rail-note{margin:auto 13px 60px;padding-top:60px}.tiny-star{font-size:37px;color:var(--orange);transform:rotate(12deg);width:max-content}.rail-note p{font-size:13px;line-height:1.9;color:#73746e;margin:14px 0 19px}.note-line{height:1px;width:30px;background:#cecec4;margin:0 0 16px}.rail-note small{font-size:9px;line-height:1.8;letter-spacing:1.6px;color:#9c9d94}.rail-bottom{font-size:10px;display:flex;gap:6px;align-items:center;color:#8b8d82}.status-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#84a57d;flex:none}.version{margin-left:auto;font-family:monospace;font-size:9px;color:#a9aa9f}
+main{margin-left:220px;flex:1;min-width:0;display:flex;flex-direction:column;min-height:100vh}.topbar{height:72px;border-bottom:1px solid var(--line);padding:0 42px;display:flex;align-items:center;justify-content:space-between}.breadcrumb{font-size:11px;color:#999a92;display:flex;gap:14px}.breadcrumb strong{font-weight:500;color:#5d625e}.top-label{font-size:10px;color:#999b91;display:flex;gap:7px;align-items:center}.top-star{font-size:20px;margin-left:17px;color:#7d8075}.page{max-width:1240px;width:100%;margin:0 auto;padding:0 48px}.hero{display:flex;justify-content:space-between;align-items:center;min-height:314px;padding:38px 0 32px}.eyebrow{font-size:9px;letter-spacing:2px;font-weight:600;color:#797d75;display:flex;align-items:center;gap:8px}.eyebrow>span{width:6px;height:6px;background:var(--orange);transform:rotate(45deg)}h1{font-size:49px;letter-spacing:-2px;line-height:1.26;margin:20px 0 16px;font-weight:750}.accent-word{color:var(--orange);position:relative;display:inline-block;margin:0 4px}.accent-word svg{position:absolute;width:100%;left:0;bottom:-7px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round}.hero-copy p{font-size:12px;line-height:1.9;color:#85877e;margin:0}.hero-art{position:relative;width:320px;height:240px;flex:none;margin-right:10px}.art-orbit{position:absolute;width:220px;height:220px;border:1px dashed #d8d6ca;border-radius:50%;top:9px;left:35px}.art-card{position:absolute;width:147px;height:182px;border:1px solid #a7aa9b;border-radius:9px;display:flex;flex-direction:column;justify-content:space-between;padding:14px;box-shadow:0 9px 0 -4px #2e323411}.art-card>span{font:7px monospace;letter-spacing:1px}.art-card b{font-size:83px;font-weight:500;line-height:1;text-align:center}.art-card small{font-size:8px;letter-spacing:.5px}.art-back{background:#e1e5d4;transform:rotate(-16deg);left:38px;top:22px}.art-back b{color:#627555}.art-front{background:#f2d9c4;transform:rotate(13deg);left:133px;top:40px;border-color:#d1ab8c}.art-front b{color:#d6653d}.art-cross{position:absolute;left:13px;top:30px;color:#92967f;font-size:28px;font-weight:200;transform:rotate(20deg)}.art-spark{position:absolute;right:5px;top:18px;font-size:41px;color:#8a799c}.art-caption{position:absolute;bottom:0;left:48px;font:italic 14px Georgia,serif;color:#959382;transform:rotate(-7deg)}
+.workbench{display:grid;grid-template-columns:1.06fr 1fr;gap:20px;align-items:stretch}.panel{background:var(--white);border:1px solid var(--line);border-radius:12px}.idea-panel,.cards-panel{padding:23px}.section-title{display:flex;align-items:center;gap:9px;min-height:23px}.section-title h2{font-size:14px;font-weight:650;letter-spacing:.1px;margin:0}.step{font:10px monospace;color:#93958d;border:1px solid #dcded4;border-radius:4px;padding:3px 4px}.title-tail{margin-left:auto;letter-spacing:1.2px;font:8px monospace;color:#9da093}.input-wrap{background:#f7f7f1;border:1px solid #e7e8dd;border-radius:7px;margin:22px 0 16px;transition:border-color .2s,background .2s}.input-wrap:focus-within{border-color:#c6b39f;box-shadow:0 0 0 3px #ed6a3b08}.input-wrap.dragging{border:2px dashed var(--orange);background:#fcf0e7}#idea{display:block;width:100%;height:139px;resize:vertical;min-height:110px;max-height:300px;border:0;background:none;padding:17px;color:#4e544c;font-size:12px;line-height:1.9;outline:none;letter-spacing:.2px}#idea::placeholder{color:#aaa99d}.input-foot{padding:9px 13px;border-top:1px dashed #e0e1d4;display:flex;justify-content:space-between;font-size:9px;color:#a3a499;gap:8px}.input-foot b{font-weight:400}.examples{font-size:10px;display:flex;align-items:center;gap:10px;color:#969a8c}.examples>span{white-space:nowrap}.examples>div{display:flex;gap:5px;flex-wrap:wrap}.example{background:#faf9f4;border:1px solid #e4e5d9;padding:5px 7px;font-size:9px;color:#848777;border-radius:4px}.example:hover{border-color:#b6bba3;background:#f2f3e7}.input-divider{height:1px;background:var(--line);margin:24px 0 19px}.strength-row{display:flex;align-items:center;justify-content:space-between;gap:9px}h3{font-size:11px;margin:0;font-weight:550}.strength-row p{font-size:9px;color:#9b9e91;margin:6px 0 0}.strength{display:flex;padding:3px;border:1px solid #e4e4da;background:#f4f4ed;border-radius:5px;flex:none}.strength button{padding:6px 8px;font-size:9px;background:none;color:#969b8a;border-radius:3px}.strength button.active{background:var(--white);color:var(--orange);box-shadow:0 1px 4px #00000010}.primary{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:var(--orange);color:white;border-radius:6px;font-size:12px;font-weight:600;margin-top:23px;box-shadow:0 3px 0 #b64d2420;transition:background .2s,transform .2s}.primary:hover{background:#df5b2d;transform:translateY(-1px)}.button-star{font-size:22px;line-height:1}.button-arrow{position:absolute;right:16px;font-size:20px;font-weight:400}.primary{position:relative}.action-hint{display:flex;justify-content:space-between;font-size:9px;color:#a5a799;margin-top:11px;align-items:center}kbd{font:9px inherit;border:1px solid #e4e6db;border-radius:3px;padding:1px 4px;color:#a4a893}.error{font-size:11px;line-height:1.6;color:#bc4f38;margin-bottom:0}.text-button{margin-left:auto;background:none;font-size:10px;color:#888c80;padding:5px 0 5px 8px}.text-button:hover{color:var(--orange)}.cards-helper{display:flex;justify-content:space-between;color:#9d9f93;font-size:9px;margin:15px 0 15px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;min-height:194px}.mutation-card{border:1px solid var(--card-border);background:var(--card-bg);color:var(--card-color);border-radius:7px;padding:12px 10px 10px;display:flex;flex-direction:column;align-items:flex-start;text-align:left;position:relative;transition:transform .2s,box-shadow .2s;min-width:0}.mutation-card:hover{transform:translateY(-5px);box-shadow:0 8px 14px #2529340b}.mutation-card.locked{box-shadow:0 0 0 2px var(--card-color)}.mutation-card .card-en{font:7px monospace;letter-spacing:.6px;min-height:18px;line-height:1.3;opacity:.7}.card-mark{display:flex;align-items:center;justify-content:center;width:100%;height:68px;font-size:45px;letter-spacing:-3px;font-weight:400}.card-mark.small-mark{font-size:28px;font-weight:500}.card-name{font-size:12px;font-weight:650;white-space:nowrap;letter-spacing:-.3px;margin:8px 0}.card-desc{font-size:9px;line-height:1.7;opacity:.75;flex:1}.card-tag{font-size:8px;border-top:1px solid var(--card-border);padding-top:8px;margin-top:12px;width:100%;display:flex;justify-content:space-between}.card-lock{font-size:10px}.purple{--card-bg:#eeeaf6;--card-color:#79649b;--card-border:#ded6eb}.orange{--card-bg:#faeee4;--card-color:#c77d53;--card-border:#eed9c8}.green{--card-bg:#eaf0e6;--card-color:#75876a;--card-border:#d5dfcf}.blue{--card-bg:#e7eff4;--card-color:#65879d;--card-border:#d3e0e9}.pink{--card-bg:#f7eaf0;--card-color:#b17b90;--card-border:#e9d6df}.deck-toggle{display:flex;justify-content:space-between;align-items:center;width:100%;background:#f8f8f2;border:1px dashed #dfe2d3;border-radius:5px;padding:11px 12px;margin-top:13px;color:#9c9f90;font-size:10px}.deck-toggle:hover{border-color:#b6baa5;color:#777e69}.deck{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:12px 0 0}.deck-choice{border:1px solid var(--card-border);background:var(--card-bg);color:var(--card-color);padding:9px 3px;font-size:10px;border-radius:5px}.deck-choice[aria-pressed=true]{outline:1px solid var(--card-color);outline-offset:1px}.recipe-note{display:flex;align-items:center;gap:13px;margin:25px 4px 0;color:#b3b6a5}.recipe-note>span:first-child{font-size:28px;color:#b8b9a8}.recipe-note p{font-size:10px;line-height:1.9;margin:0}.recipe-note strong{font-weight:400;color:#8b907f}.recipe-line{font-size:32px;font-weight:200;transform:rotate(-20deg);margin-left:auto;color:#b5b79f}.lab-footer{display:flex;justify-content:space-between;font-size:9px;color:#a0a494;margin:24px 0 40px}.lab-footer>span{display:flex;align-items:center;gap:6px}.lab-footer b{font-weight:500;color:#727e65}.footer-spark{font-size:16px;color:#adb099;margin-left:6px}.page-footer{padding:18px 42px;margin-top:auto;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:8px monospace;letter-spacing:1.2px;color:#9fa293}
+.result-panel{margin-top:24px;padding:26px;scroll-margin-top:20px}.result-top{display:flex;justify-content:space-between;gap:10px}.draft-badge{font-size:8px;padding:4px 6px;background:#edf0e6;border-radius:4px;color:#7a8b6c;margin-left:5px}.secondary{padding:8px 11px;border:1px solid #dedfd5;background:#fffefa;border-radius:5px;font-size:10px;white-space:nowrap}.secondary:hover{background:#f3f2eb;border-color:#bbbda9}.secondary[aria-pressed=true]{background:#f9ede4;border-color:#e3bda4;color:#b8754c}.result-recipe{display:flex;gap:6px;align-items:center;margin:19px 0 10px;font-size:11px;color:#acac9b}.recipe-chip{background:var(--card-bg);color:var(--card-color);border:1px solid var(--card-border);font-size:9px;padding:4px 7px;border-radius:4px}.result-title{display:block;width:100%;border:0;background:transparent;font-size:23px;font-weight:650;padding:9px 0 16px;color:var(--ink)}.result-fields{display:grid;grid-template-columns:1fr 1fr;gap:22px 26px;margin-top:10px}.result-field{display:flex;flex-direction:column;gap:10px}.result-field:first-child,.result-field:last-child{grid-column:1/-1}.field-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:#727b65}.field-label:before{content:'';width:4px;height:4px;background:#a6b68b;transform:rotate(45deg)}.field-text{width:100%;resize:vertical;min-height:60px;border:1px solid #e6e7df;background:#fafaf6;border-radius:5px;font-size:12px;line-height:1.95;padding:13px;color:#656c5c;overflow:hidden}.result-bottom{margin-top:24px;padding-top:19px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}.result-bottom>span{font-size:9px;color:#9a9f8b}.result-actions{display:flex;gap:7px;flex-wrap:wrap}.dark-button{background:#333c30;color:#fffefa;font-size:10px;padding:9px 13px;border-radius:5px;white-space:nowrap}.dark-button:hover{background:#4c5946}.collection-view{padding-top:52px}.collection-view h1{font-size:38px;margin-top:22px}.collection-subtitle{font-size:12px;color:#8b9181;margin-bottom:35px}.collection-tabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-bottom:24px}.collection-tabs button{display:flex;gap:8px;background:none;font-size:11px;padding:10px 0 15px;color:#9c9e91;border-bottom:2px solid transparent}.collection-tabs button.active{color:var(--orange);border-color:var(--orange)}.collection-tabs span{color:#9ca18e;font:10px monospace}.history-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin-bottom:40px}.history-card{padding:21px;background:var(--white);border:1px solid var(--line);border-radius:10px;min-width:0}.history-card .result-recipe{margin:0 0 13px}.history-card h2{font-size:15px;line-height:1.6;margin:0 0 10px;overflow-wrap:anywhere}.history-card p{font-size:11px;color:#929883;line-height:1.9;margin:0 0 20px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.history-bottom{display:flex;align-items:center;gap:7px}.history-date{font:9px monospace;color:#a4a891;margin-right:auto}.history-delete{background:none;font-size:10px;color:#a2a78f;padding:6px}.empty-state{grid-column:1/-1;text-align:center;padding:70px 20px;border:1px dashed #d9decd;border-radius:10px;color:#8a947b}.empty-state .empty-mark{font-size:49px;color:#bbc5aa}.empty-state h2{font-size:17px;font-weight:500}.empty-state p{font-size:11px;margin-bottom:23px}.toast{position:fixed;bottom:25px;left:calc(50% + 80px);transform:translate(-50%,15px);padding:12px 19px;background:#333c30;color:#fffefa;border-radius:7px;font-size:12px;box-shadow:0 5px 20px #0002;opacity:0;pointer-events:none;z-index:50;transition:.2s;max-width:85vw;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}dialog{border:1px solid var(--line);border-radius:10px;background:var(--white);padding:22px;width:min(560px,90vw);color:var(--ink)}dialog::backdrop{background:#2225}dialog .section-title{justify-content:space-between}dialog p{font-size:12px;color:#859078;line-height:1.8}dialog textarea{width:100%;height:270px;margin:12px 0;border:1px solid var(--line);padding:12px;background:#f7f7f1;font-size:12px}.drawing .mutation-card{animation:deal .55s ease both}.drawing .mutation-card:nth-child(2){animation-delay:.08s}.drawing .mutation-card:nth-child(3){animation-delay:.16s}.processing .button-star{animation:turn 1s linear infinite}@keyframes deal{0%{transform:translateY(10px) rotate(-5deg);opacity:.2}100%{transform:translateY(0) rotate(0);opacity:1}}@keyframes turn{to{transform:rotate(180deg)}}
+@media(min-width:1450px){.hero{min-height:340px}.hero-art{margin-right:60px}.idea-panel,.cards-panel{padding:28px}.cards{min-height:214px}.card-mark{height:80px}.card-desc{font-size:10px}.card-name{font-size:13px}.hero h1{font-size:55px}.hero-copy p{font-size:13px}}
+@media(max-width:1150px){.rail{width:190px;padding-left:14px;padding-right:14px}main{margin-left:190px}.page{padding:0 28px}.topbar{padding:0 28px}.hero-art{width:270px;transform:scale(.88);transform-origin:right center;margin-right:0}.hero h1{font-size:43px}.idea-panel,.cards-panel{padding:18px}.workbench{gap:14px}.card-name{font-size:10px}.card-desc{font-size:8px}.cards{gap:6px}.mutation-card{padding:9px 8px}.card-en{font-size:6px}.strength button{padding:6px}.examples{gap:6px}.example{font-size:8px;padding:5px}.result-bottom{flex-wrap:wrap}.result-bottom>span{width:100%;margin-bottom:4px}}
+@media(max-width:900px){.rail{width:76px;align-items:center;padding:29px 10px}.brand{padding:0}.brand-word,.rail-caption,.rail-note,.rail-bottom,.nav-arrow,.count{display:none}.brand-symbol{font-size:43px;letter-spacing:-6px}.brand-symbol>span{font-size:18px;right:-10px}.nav-item{font-size:0;justify-content:center;width:48px;padding:12px 0;margin:35px 0 0;gap:0}.nav-item+.nav-item{margin-top:9px}.nav-icon{font-size:23px;width:auto}.nav-item[aria-label]{font-size:0}main{margin-left:76px}.page{padding:0 24px}.hero{min-height:285px;padding:30px 0}.hero-art{width:240px;transform:scale(.8)}.hero h1{font-size:42px}.workbench{grid-template-columns:1fr}.cards{min-height:0}.mutation-card{min-height:180px;padding:14px}.card-name{font-size:14px}.card-desc{font-size:11px}.card-mark{height:55px}.card-tag{font-size:9px}.cards-helper{font-size:10px}.recipe-note{margin-top:19px}.idea-panel,.cards-panel{padding:24px}.input-wrap{margin-top:18px}#idea{height:130px}.input-foot,.example{font-size:10px}.strength-row p{font-size:10px}.strength button{padding:7px 13px}.action-hint{font-size:10px}.primary{margin-top:20px}.lab-footer{gap:10px;line-height:1.8}.toast{left:calc(50% + 38px)}.page-footer{padding:18px 24px}.history-list{grid-template-columns:1fr}.collection-view{padding-top:40px}}
+@media(max-width:560px){.rail{width:58px;padding:25px 5px}.brand-symbol{font-size:32px;letter-spacing:-4px}.brand-symbol>span{font-size:14px;right:-8px}.nav-item{width:38px}.nav-icon{font-size:20px}main{margin-left:58px}.topbar{padding:0 18px;height:56px}.top-label{display:none}.page{padding:0 16px}.hero{min-height:260px;position:relative;overflow:hidden}.hero h1{font-size:35px;letter-spacing:-1.5px;margin-top:18px}.hero .eyebrow{font-size:7px;letter-spacing:1px}.hero-copy p{font-size:11px}.hero-copy{position:relative;z-index:1}.hero-art{position:absolute;right:-140px;top:25px;opacity:.2;transform:scale(.68);width:300px;pointer-events:none}.hero-art .art-caption{display:none}.idea-panel,.cards-panel{padding:17px}.section-title h2{font-size:13px}.title-tail{font-size:7px}.input-foot{font-size:8px}.input-foot>span:first-child{max-width:155px}.examples{flex-direction:column;align-items:flex-start}.examples>div{gap:5px}.example{font-size:9px}.strength-row{align-items:flex-start}.strength-row h3{font-size:10px}.strength-row p{font-size:8px;max-width:130px;line-height:1.7}.strength button{padding:6px;font-size:9px}.primary{font-size:12px;padding:13px}.action-hint{font-size:8px}.cards-helper{font-size:8px}.cards{gap:6px}.mutation-card{padding:10px 7px;min-height:190px}.mutation-card .card-en{font-size:6px;letter-spacing:0;min-height:19px}.card-name{font-size:10px;letter-spacing:-.5px;margin:6px 0}.card-desc{font-size:8px;line-height:1.8}.card-mark{font-size:38px;height:60px}.card-mark.small-mark{font-size:22px}.card-tag{font-size:7px}.card-lock{font-size:8px}.deck-choice{font-size:9px}.deck-toggle{font-size:9px}.recipe-note p{font-size:9px}.recipe-note{margin-top:18px}.lab-footer{font-size:8px;flex-direction:column;margin-bottom:25px}.page-footer{font-size:7px;letter-spacing:.2px;padding:16px}.page-footer>span:last-child{display:none}.result-panel{padding:17px}.result-fields{grid-template-columns:1fr;gap:19px}.result-title{font-size:18px}.result-top{align-items:flex-start}.result-top .section-title{flex-wrap:wrap}.draft-badge{margin-left:0}.result-top .secondary{font-size:9px;padding:7px}.field-text{font-size:11px}.result-actions{gap:5px}.result-actions .secondary,.dark-button{font-size:9px;padding:8px}.toast{left:calc(50% + 29px);font-size:11px}.collection-view{padding-top:32px}.collection-view h1{font-size:27px;letter-spacing:-1px}.collection-subtitle{font-size:11px;line-height:1.8}.history-card{padding:17px}.history-bottom{flex-wrap:wrap}.history-date{font-size:8px}.history-bottom button{font-size:9px}.result-recipe{flex-wrap:wrap}.deck{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+  <aside class="rail" aria-label="主导航">
+    <a class="brand" href="#" aria-label="灵感变异机首页"><span class="brand-symbol">m<span>✳</span></span><span class="brand-word">MUTANT<br><small>IDEA LAB</small></span></a>
+    <div class="rail-caption">你的灵感实验室</div>
+    <button class="nav-item active" data-view="lab"><span class="nav-icon">⚗</span> 变异实验室 <span class="nav-arrow">↗</span></button>
+    <button class="nav-item" data-view="collection"><span class="nav-icon">▧</span> 灵感收藏夹 <span id="saved-count" class="count">0</span></button>
+    <div class="rail-note"><div class="tiny-star">✳</div><p>好点子不是等来的，<br>是碰撞出来的。</p><div class="note-line"></div><small>KEEP IT WEIRD.<br>MAKE IT REAL.</small></div>
+    <div class="rail-bottom"><span class="status-dot"></span><span id="environment">本地实验模式</span><span class="version">v0.1</span></div>
+  </aside>
+  <main>
+    <header class="topbar"><span class="breadcrumb">工作台 <span>/</span> <strong id="page-label">变异实验室</strong></span><span class="top-label"><span class="status-dot"></span> 给想法留一点可能性 <span class="top-star">✳</span></span></header>
+    <div class="page" id="lab-view">
+      <section class="hero">
+        <div class="hero-copy"><div class="eyebrow"><span></span> A LITTLE CHAOS. A BETTER IDEA.</div><h1>让好想法，<br>发生一点<span class="accent-word">意外<svg viewBox="0 0 150 13" aria-hidden="true"><path d="M3 9 Q65 0 145 6 M28 12 Q86 5 127 9"/></svg></span>。</h1><p>放进一个想法，抽几张变异卡。<br>看看它能长成什么不一样的东西。</p></div>
+        <div class="hero-art" aria-hidden="true"><span class="art-orbit"></span><span class="art-cross">+</span><div class="art-card art-back"><span>WHAT IF?</span><b>↶</b><small>换个角度，再来一次</small></div><div class="art-card art-front"><span>IDEA MUTATION / 001</span><b>✳</b><small>一点意外，无限可能 ↗</small></div><span class="art-spark">✧</span><span class="art-caption">a happy accident ↗</span></div>
+      </section>
+      <section class="workbench" aria-label="灵感变异工作台">
+        <div class="idea-panel panel">
+          <div class="section-title"><span class="step">01</span><h2>先放进一个想法</h2><span class="title-tail">THE SEED</span></div>
+          <label class="sr-only" for="idea">你的原始想法</label>
+          <div id="dropzone" class="input-wrap"><textarea id="idea" maxlength="1600" placeholder="想做点什么？一个产品、一个玩法，&#10;或者一个还没想清楚的念头…" spellcheck="false"></textarea><div class="input-foot"><span id="drop-label">↳ 也可以拖入文字或 .txt / .md 文件</span><span><b id="char-count">0</b> / 1600</span></div></div>
+          <div class="examples"><span>试试这些</span><div id="examples"></div></div>
+          <div class="input-divider"></div>
+          <div class="strength-row"><div><h3>今天想冒多大的险？</h3><p id="strength-description">三种思路碰撞，看看会发生什么。</p></div><div class="strength" role="group" aria-label="抽卡数量"><button data-count="1" aria-pressed="false">微变</button><button data-count="2" aria-pressed="false">跨界</button><button data-count="3" class="active" aria-pressed="true">脑洞</button></div></div>
+          <button id="mutate" class="primary"><span class="button-star">✳</span><span id="mutate-label">开始变异</span><span class="button-arrow">↗</span></button>
+          <div class="action-hint"><span>本地规则生成 · 不消耗 Token</span><kbd>⌘ / Ctrl ↵</kbd></div>
+          <p id="input-error" class="error" role="alert" hidden></p>
+        </div>
+        <div class="cards-panel panel">
+          <div class="section-title"><span class="step">02</span><h2>给想法加点变量</h2><button id="shuffle" class="text-button" title="保留锁定卡，重新抽取其余卡">⤨ 换一手</button></div>
+          <div class="cards-helper"><span>点击卡牌锁定，留下你喜欢的意外。</span><span id="card-count">3 张配方</span></div>
+          <div id="cards" class="cards" aria-label="当前变异卡"></div>
+          <button id="deck-toggle" class="deck-toggle" aria-expanded="false"><span>▦ 查看全部 12 张变异卡</span><span>＋</span></button>
+          <div id="deck" class="deck" hidden></div>
+          <div class="recipe-note"><span>✧</span><p>没有标准答案。<br><strong>只有还没试过的打开方式。</strong></p><span class="recipe-line">↗</span></div>
+        </div>
+      </section>
+      <section id="result" class="result-panel panel" aria-labelledby="result-heading" hidden>
+        <div class="result-top"><div class="section-title"><span class="step">03</span><h2 id="result-heading">一个新的可能</h2><span class="draft-badge">规则草案 · 可编辑</span></div><button id="save" class="secondary" aria-pressed="false">☆ 收藏方案</button></div>
+        <div id="result-recipe" class="result-recipe"></div>
+        <label class="sr-only" for="result-title">方案标题</label><input id="result-title" class="result-title" maxlength="120" aria-label="方案标题">
+        <div id="result-fields" class="result-fields"></div>
+        <div class="result-bottom"><span id="autosave">修改自动保存在当前浏览器</span><div class="result-actions"><button id="copy" class="secondary">复制方案</button><button id="export" class="secondary">↓ 导出 .md</button><button id="deepen" class="dark-button">复制 DSH 深化提示词 ↗</button></div></div>
+      </section>
+      <div class="lab-footer"><span><span class="status-dot"></span> <b id="mutation-count">0</b> 次意外，正在发生</span><span>小小的念头，也值得一次实验。 <span class="footer-spark">✳</span></span></div>
+    </div>
+    <div class="page collection-view" id="collection-view" hidden>
+      <div class="eyebrow"><span></span> KEEP THE GOOD ONES.</div><h1>把可能，留下来。</h1><p class="collection-subtitle">收藏喜欢的方向，也随时回到之前的实验。</p>
+      <div class="collection-tabs" role="group" aria-label="记录筛选"><button class="active" data-filter="saved" aria-pressed="true">我的收藏 <span id="collection-count">0</span></button><button data-filter="all" aria-pressed="false">全部实验 <span id="history-count">0</span></button></div>
+      <div id="history-list" class="history-list"></div>
+    </div>
+    <footer class="page-footer"><span>✳ MUTANT IDEA LAB</span><span>MADE FOR YOUR NEXT “WHAT IF”.</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="copy-dialog"><form method="dialog"><div class="section-title"><h2>手动复制</h2><button class="secondary" aria-label="关闭">×</button></div><p>浏览器暂时无法写入剪贴板，请选择下面的文字复制。</p><textarea id="copy-fallback" readonly aria-label="待复制的文字"></textarea><button class="dark-button">完成</button></form></dialog>
+  <script type="module">const CARDS = [
+  { id: 'reverse', name: '反着做', en: 'REVERSE IT', mark: '↶', color: 'purple', tag: '打破惯性', desc: '如果把最理所当然的规则反过来？', rule: '反转一个核心假设，保留用户真正想要的结果。', angle: '让用户先看到结果，再决定要不要投入', experiment: '做两个入口：一个沿用原流程，一个先展示可体验的结果，各邀请 5 人尝试', metric: '记录首次获得价值所需时间，以及愿意继续的人数', risk: '反转后可能失去原有体验中必要的解释与信任' },
+  { id: 'budget', name: '预算砍九成', en: 'LESS IS MORE', mark: '−90%', color: 'orange', tag: '极限约束', desc: '只剩十分之一预算，什么值得留下？', rule: '预算和功能都缩到十分之一，只保留一个价值闭环。', angle: '用一个页面和一次手动交付，验证最核心的需求', experiment: '删掉登录、积分和复杂后台，先用表单或可点击原型为 3 人完成一次交付', metric: '记录每次交付耗时、实际成本，以及是否有人愿意再次使用', risk: '人工验证能证明需求，不能直接证明大规模交付能力' },
+  { id: 'game', name: '变成游戏', en: 'MAKE IT PLAY', mark: '✳', color: 'green', tag: '快乐驱动', desc: '把“我应该做”变成“再来一局”。', rule: '把核心行为做成 60 秒以内的挑战，用反馈而非强制签到推动重玩。', angle: '把一次完整体验压成一分钟的小挑战', experiment: '实现一个目标、一种操作、即时反馈和再来一次按钮，找 5 人各试玩 3 局', metric: '记录首局完成率、主动重玩人数和重玩的原因', risk: '游戏奖励可能掩盖真实价值；检查移除奖励后用户是否仍愿意使用' },
+  { id: 'audience', name: '换一群人', en: 'NEW PEOPLE', mark: '↗', color: 'blue', tag: '换个视角', desc: '同一个点子，谁会比现在的人更需要？', rule: '选择一个被忽视的具体人群，按他们的场景重做入口。', angle: '从所有人，收窄到第一次接触这件事的新手', experiment: '找 3 位目标新手，观察他们第一次操作时停在哪一步，再只修改这一步', metric: '记录无指导完成率，以及每个人说出的具体使用场景', risk: '目标人群可能容易触达，却并没有足够强的需求' },
+  { id: 'offline', name: '离开屏幕', en: 'GO OFFLINE', mark: '◈', color: 'pink', tag: '场景迁移', desc: '如果体验发生在桌边、街角或一张纸上？', rule: '把核心体验转成一个现实中的动作，屏幕只承担记录或反馈。', angle: '做成一张可以交到朋友手里的挑战卡', experiment: '打印或手写 5 张体验卡，面对面观察使用过程，最后再用一个二维码承接反馈', metric: '记录实际参与人数、完成动作的人数和自发分享次数', risk: '线下互动有新鲜感，但分发与回收成本可能较高' },
+  { id: 'social', name: '两个人才好玩', en: 'BETTER TOGETHER', mark: '∞', color: 'purple', tag: '关系化学', desc: '从一个人的工具，变成两个人的默契。', rule: '设计一种无需强制拉新的双人协作，让对方的参与真的改变结果。', angle: '一人出题，一人回应，共同完成一个小目标', experiment: '邀请 3 对朋友，用链接或纸面原型完成一轮协作，不添加排行榜', metric: '记录双人完成率，以及是否自愿发起第二轮', risk: '等待另一人会增加流失；为未配对用户保留单人体验' },
+  { id: 'tiny', name: '只做一分钟', en: 'ONE MINUTE', mark: '60s', color: 'orange', tag: '缩小尺度', desc: '删到用户一分钟就能得到第一次惊喜。', rule: '将第一次价值体验限制在 60 秒内，移除前置配置。', angle: '打开即用，先给一次完整的小结果', experiment: '用秒表观察 5 人的首次体验，把每个阻塞步骤逐项删掉或延后', metric: '记录首次价值时间中位数及一分钟内完成的人数', risk: '为了速度过度简化，可能让结果失去实际用途' },
+  { id: 'remix', name: '跨界杂交', en: 'UNLIKELY MIX', mark: '⊕', color: 'green', tag: '意外连接', desc: '给这个想法，嫁接一个陌生领域的机制。', rule: '借用盲盒的揭晓感或展览的策展机制，不照搬付费抽奖。', angle: '把结果做成一次有主题的发现与揭晓', experiment: '做 6 个有差异的样本，用户先选择主题再揭晓，并能跳过动画直接查看', metric: '记录样本收藏率和用户对结果差异的评价', risk: '揭晓动画只能制造期待；样本本身必须提供实质差异' },
+  { id: 'slow', name: '故意慢一点', en: 'SLOW MAGIC', mark: '◷', color: 'blue', tag: '反效率', desc: '什么东西，值得让人期待到明天？', rule: '把即时输出改为可期待的有限交付，同时给用户明确进度和退出方式。', angle: '每天只交付一个经过挑选的小成果', experiment: '连续 3 天，为 5 位用户手动挑选一份结果，让他们自行选择是否订阅下一天', metric: '记录主动续订人数、实际阅读反馈和退订原因', risk: '延迟本身没有价值；需要证明策展或质量值得等待' },
+  { id: 'transparent', name: '拆开给人看', en: 'OPEN THE BOX', mark: '⌘', color: 'pink', tag: '信任设计', desc: '让过程也成为体验的一部分。', rule: '把关键依据、过程和可修改参数展示出来，让用户能纠正结果。', angle: '每个结果附一张可调整的过程配方', experiment: '给 5 人同一个结果，让他们修改一项参数，观察是否能得到更合适的版本', metric: '记录成功修改人数及用户能否解释结果为什么变化', risk: '过程细节过多可能增加负担，默认只展示最关键的三项' },
+  { id: 'gift', name: '把它当礼物', en: 'MAKE A GIFT', mark: '✧', color: 'purple', tag: '情绪价值', desc: '如果不是自己用，而是想送给一个人？', rule: '围绕一个具体收件人与场合定制结果，让接收者无需注册即可体验。', angle: '生成一份只有这个朋友才懂的小作品', experiment: '让 3 人为各自的一位朋友制作并发送样本，向接收者收集真实反馈', metric: '记录成功送出数、被打开数和收到的具体回应', risk: '定制内容可能涉及隐私；只使用发送者明确提供的信息' },
+  { id: 'opposite', name: '拒绝一个功能', en: 'SAY NO', mark: '×', color: 'orange', tag: '减法实验', desc: '去掉行业标配，体验会不会反而更好？', rule: '选择一个常见但非必要的功能删除，用更清楚的规则替代。', angle: '去掉评分和排行榜，改成个人进度与作品留存', experiment: '做一份删减版原型，请 5 人完成同一任务，询问他们真正想找回的功能', metric: '记录任务完成率、被要求恢复的功能及原因', risk: '被删除的功能可能支持一类重要用户，保留反馈与恢复路径' },
+];
+
+const EXAMPLES = [
+  { label: '一款微信小游戏', text: '我做了一款微信小游戏，想让玩家愿意多玩一局，也愿意分享给朋友。预算有限，希望先验证一个新的玩法。' },
+  { label: '一个独立产品', text: '做一个帮独立开发者记录每天进展的轻量工具，让一个人做项目时也能感受到持续前进。' },
+  { label: '一家街角咖啡店', text: '给街角咖啡店设计一个小活动，让附近上班的人第一次来之后，还愿意带朋友再来。' },
+];
+
+function drawCards(count = 3, locked = [], rng = Math.random) {
+  const n = Math.max(1, Math.min(3, Math.trunc(Number(count)) || 1));
+  const held = [...new Set(locked)].filter(id => CARDS.some(card => card.id === id)).slice(0, n);
+  const pool = CARDS.filter(card => !held.includes(card.id));
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.max(0, Math.min(0.999999999, rng())) * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return [...held, ...pool.slice(0, n - held.length).map(card => card.id)];
+}
+
+function validateIdea(value) {
+  if (typeof value !== 'string' || !value.trim()) throw new Error('先放进来一个想法，再看看它会长成什么。');
+  if (value.trim().length > 1600) throw new Error('想法有点长，请压缩到 1600 字以内。');
+  return value.trim();
+}
+
+function generatePlan(idea, ids, { variant = 0, now = Date.now(), id = globalThis.crypto.randomUUID() } = {}) {
+  const source = validateIdea(idea);
+  const selected = [...new Set(ids)].map(key => CARDS.find(card => card.id === key)).filter(Boolean).slice(0, 3);
+  if (!selected.length) throw new Error('至少选一张变异卡。');
+  const subject = source.replace(/[。！？!?\n].*$/s, '').slice(0, 26);
+  const perspectives = ['先做给一个真实的人', '先验证最出乎意料的部分', '先把第一次体验做完整'];
+  const lead = selected[Math.abs(variant) % selected.length];
+  const sections = [
+    { label: '新的打开方式', value: `围绕「${subject}」，${lead.angle}。\n\n${selected.map((card, index) => `${index + 1}. ${card.name}：${card.rule}`).join('\n')}\n\n组合原则：以「${lead.name}」为主机制，其余卡作为约束；出现冲突时，优先保留用户能实际获得的价值。` },
+    { label: '第一版就做这些', value: `${perspectives[Math.abs(variant) % perspectives.length]}。\n\n${selected.map((card, index) => `${index + 1}. ${card.experiment}。`).join('\n')}\n\n先做可点击原型或手动交付；没有验证过的部分，先写成假设。` },
+    { label: '怎么知道它有用', value: `${selected.map(card => `• ${card.metric}。`).join('\n')}\n\n提前约定继续投入的门槛；小样本只用来发现问题，不作为增长或收入的证明。` },
+    { label: '留意这件事', value: selected.map(card => `• ${card.risk}。`).join('\n') },
+    { label: '现在就能做的一步', value: `把「${lead.angle}」画成三个画面：进入、核心动作、获得结果。找一位符合目标的人尝试，记下他第一次犹豫的位置。` },
+  ];
+  return { id, createdAt: now, idea: source, cardIds: selected.map(card => card.id), title: `${subject} · ${lead.name}实验`, sections, saved: false, variant, origin: 'rules' };
+}
+
+function toMarkdown(plan) {
+  const cards = plan.cardIds.map(id => CARDS.find(card => card.id === id)?.name).filter(Boolean);
+  return `# ${plan.title}\n\n> 灵感变异机 · 规则草案\n\n## 原始想法\n\n${plan.idea}\n\n变异配方：${cards.join(' × ')}\n\n${plan.sections.map(section => `## ${section.label}\n\n${section.value}`).join('\n\n')}\n`;
+}
+
+function toPrompt(plan) {
+  return `请把下面的灵感变异草案深化为针对原始想法的具体方案。草案来自本地规则模板，尚未经过事实验证。\n\n要求：\n1. 保留我对草案的编辑，以及所选变异卡的约束。\n2. 写清目标用户、核心体验、最小实现、验证步骤和失败条件。\n3. 遇到规则冲突，给出明确取舍；不要堆砌功能。\n4. 不编造用户数据、收入、市场规模或验证结论。\n5. 先输出可继续修改的 Markdown 方案，不执行部署、发布或付费操作。\n\n${toMarkdown(plan)}`;
+}
+
+// Treat browser storage as untrusted and retain only our bounded document format.
+function normalizeHistory(value) {
+  if (!Array.isArray(value)) return [];
+  const seen = new Set();
+  return value.filter(item => {
+    if (!item || typeof item.id !== 'string' || seen.has(item.id) || typeof item.idea !== 'string' || typeof item.title !== 'string' || !Number.isFinite(item.createdAt) || !Array.isArray(item.cardIds) || !item.cardIds.length || !item.cardIds.every(id => CARDS.some(card => card.id === id)) || !Array.isArray(item.sections) || item.sections.length !== 5 || !item.sections.every(section => typeof section?.label === 'string' && typeof section?.value === 'string')) return false;
+    seen.add(item.id);
+    return true;
+  }).slice(0, 60).map(item => ({ id: item.id.slice(0, 100), idea: item.idea.slice(0, 1600), title: item.title.slice(0, 120), createdAt: item.createdAt, cardIds: [...new Set(item.cardIds)].slice(0, 3), sections: item.sections.map(section => ({ label: section.label.slice(0, 40), value: section.value.slice(0, 10000) })), saved: item.saved === true, variant: Number.isInteger(item.variant) ? item.variant : 0, origin: 'rules' }));
+}
+
+
+const $ = selector => document.querySelector(selector);
+const STORE_KEY = 'dsh-idea-mutator:v1';
+let storageAvailable = true;
+let stored = {};
+try { stored = JSON.parse(localStorage.getItem(STORE_KEY) || '{}') || {}; } catch { storageAvailable = false; }
+const state = {
+  history: normalizeHistory(stored.history),
+  idea: typeof stored.idea === 'string' ? stored.idea.slice(0, 1600) : '',
+  currentId: typeof stored.currentId === 'string' ? stored.currentId : null,
+  selected: drawCards(3), locked: [], count: 3,
+  total: Number.isSafeInteger(stored.total) && stored.total >= 0 ? stored.total : 0,
+  view: 'lab', filter: 'saved', busy: false, embedded: false,
+};
+let toastTimer;
+let saveTimer;
+let bridgeTimer;
+let requestId = null;
+function notify(message) {
+  $('#toast').textContent = message;
+  $('#toast').classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => $('#toast').classList.remove('show'), 3200);
+}
+function persist() {
+  clearTimeout(saveTimer);
+  try {
+    localStorage.setItem(STORE_KEY, JSON.stringify({ history: state.history, idea: state.idea, currentId: state.currentId, total: state.total }));
+    storageAvailable = true;
+  } catch {
+    if (storageAvailable) notify('本地保存失败，请先导出方案，避免关闭后丢失。');
+    storageAvailable = false;
+  }
+  $('#autosave').textContent = storageAvailable ? '修改自动保存在当前浏览器' : '本地保存不可用，请复制或导出方案';
+}
+function scheduleSave() { clearTimeout(saveTimer); saveTimer = setTimeout(persist, 250); }
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+function currentPlan() { return state.history.find(plan => plan.id === state.currentId); }
+function updateCounts() {
+  const saved = state.history.filter(plan => plan.saved).length;
+  $('#saved-count').textContent = saved;
+  $('#collection-count').textContent = saved;
+  $('#history-count').textContent = state.history.length;
+  $('#mutation-count').textContent = state.total;
+}
+function updateIdea(value) {
+  state.idea = value;
+  $('#idea').value = value;
+  $('#char-count').textContent = value.length;
+  $('#input-error').hidden = true;
+  $('#idea').removeAttribute('aria-invalid');
+  scheduleSave();
+}
+function animateCards() {
+  const container = $('#cards');
+  container.classList.remove('drawing');
+  void container.offsetWidth;
+  container.classList.add('drawing');
+}
+function renderCards() {
+  $('#cards').replaceChildren();
+  state.selected.forEach(id => {
+    const card = CARDS.find(item => item.id === id);
+    const locked = state.locked.includes(id);
+    const button = element('button', `mutation-card ${card.color}${locked ? ' locked' : ''}`);
+    button.setAttribute('aria-pressed', String(locked));
+    button.setAttribute('aria-label', `${card.name}，${card.desc}，${locked ? '已锁定，点击解锁' : '点击锁定'}`);
+    button.append(element('span', 'card-en', card.en), element('span', `card-mark${card.mark.length > 2 ? ' small-mark' : ''}`, card.mark), element('span', 'card-name', card.name), element('span', 'card-desc', card.desc));
+    const tag = element('span', 'card-tag');
+    tag.append(element('span', '', card.tag), element('span', 'card-lock', locked ? '已锁定' : '＋'));
+    button.append(tag);
+    button.addEventListener('click', () => {
+      state.locked = locked ? state.locked.filter(key => key !== id) : [...state.locked, id];
+      renderCards();
+      notify(locked ? `已解锁「${card.name}」` : `已锁定「${card.name}」，换牌时会保留`);
+    });
+    $('#cards').append(button);
+  });
+  $('#card-count').textContent = `${state.count} 张配方${state.locked.length ? ` · ${state.locked.length} 张锁定` : ''}`;
+  renderDeck();
+}
+function renderDeck() {
+  $('#deck').replaceChildren();
+  CARDS.forEach(card => {
+    const chosen = state.selected.includes(card.id);
+    const button = element('button', `deck-choice ${card.color}`, `${card.mark} ${card.name}`);
+    button.setAttribute('aria-pressed', String(chosen));
+    button.title = card.desc;
+    button.addEventListener('click', () => {
+      if (chosen) {
+        if (state.selected.length === 1) return notify('至少留一张卡，让想法有个变异方向。');
+        state.selected = state.selected.filter(id => id !== card.id);
+        state.locked = state.locked.filter(id => id !== card.id);
+      } else {
+        if (state.selected.length >= 3) return notify('一次最多组合 3 张卡，先取消一张再选。');
+        state.selected.push(card.id);
+        state.locked.push(card.id);
+      }
+      state.count = state.selected.length;
+      updateStrength();
+      renderCards();
+    });
+    $('#deck').append(button);
+  });
+}
+function updateStrength() {
+  document.querySelectorAll('[data-count]').forEach(button => {
+    const active = Number(button.dataset.count) === state.count;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+  $('#strength-description').textContent = ['沿着一条新思路，轻轻推开一点。', '让两种不同的思路，交叉生长。', '三种思路碰撞，看看会发生什么。'][state.count - 1];
+}
+function recipeNodes(plan) {
+  const nodes = [];
+  plan.cardIds.forEach((id, index) => {
+    const card = CARDS.find(item => item.id === id);
+    if (index) nodes.push(element('span', '', '×'));
+    nodes.push(element('span', `recipe-chip ${card.color}`, `${card.mark} ${card.name}`));
+  });
+  return nodes;
+}
+function resizeEditor(node) {
+  node.style.height = 'auto';
+  node.style.height = `${node.scrollHeight + 2}px`;
+}
+function updateSaveButton() {
+  const saved = currentPlan()?.saved === true;
+  $('#save').textContent = saved ? '★ 已收藏' : '☆ 收藏方案';
+  $('#save').setAttribute('aria-pressed', String(saved));
+}
+function renderResult(scroll = false) {
+  const plan = currentPlan();
+  $('#result').hidden = !plan;
+  if (!plan) return;
+  $('#result-title').value = plan.title;
+  $('#result-recipe').replaceChildren(...recipeNodes(plan));
+  $('#result-fields').replaceChildren();
+  plan.sections.forEach((section, index) => {
+    const wrap = element('div', 'result-field');
+    const label = element('label', 'field-label', section.label);
+    label.htmlFor = `section-${index}`;
+    const textarea = element('textarea', 'field-text');
+    textarea.id = `section-${index}`;
+    textarea.maxLength = 10000;
+    textarea.value = section.value;
+    textarea.addEventListener('input', () => { section.value = textarea.value; resizeEditor(textarea); scheduleSave(); });
+    wrap.append(label, textarea);
+    $('#result-fields').append(wrap);
+    resizeEditor(textarea);
+  });
+  updateSaveButton();
+  if (scroll) $('#result').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+}
+function setView(view) {
+  persist();
+  state.view = view;
+  $('#lab-view').hidden = view !== 'lab';
+  $('#collection-view').hidden = view !== 'collection';
+  $('#page-label').textContent = view === 'lab' ? '变异实验室' : '灵感收藏夹';
+  document.querySelectorAll('[data-view]').forEach(button => {
+    const active = button.dataset.view === view;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-current', active ? 'page' : 'false');
+  });
+  if (view === 'collection') renderHistory();
+  if (view === 'lab') document.querySelectorAll('.field-text').forEach(resizeEditor);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+function renderHistory() {
+  const list = $('#history-list');
+  list.replaceChildren();
+  const records = state.history.filter(plan => state.filter === 'all' || plan.saved);
+  if (!records.length) {
+    const empty = element('div', 'empty-state');
+    empty.append(element('div', 'empty-mark', '✳'), element('h2', '', state.filter === 'saved' ? '还没有留下来的意外' : '实验室正在等第一个想法'), element('p', '', '从一个小念头开始，喜欢的方案随时可以收藏。'));
+    const button = element('button', 'dark-button', '去做一次实验 ↗');
+    button.addEventListener('click', () => { setView('lab'); $('#idea').focus(); });
+    empty.append(button);
+    list.append(empty);
+    return;
+  }
+  records.forEach(plan => {
+    const card = element('article', 'history-card');
+    const recipe = element('div', 'result-recipe');
+    recipe.append(...recipeNodes(plan));
+    card.append(recipe, element('h2', '', plan.title || '未命名实验'), element('p', '', plan.idea));
+    const bottom = element('div', 'history-bottom');
+    bottom.append(element('span', 'history-date', new Intl.DateTimeFormat('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).format(plan.createdAt)));
+    const remove = element('button', 'history-delete', '删除');
+    remove.setAttribute('aria-label', `删除实验：${plan.title}`);
+    remove.addEventListener('click', () => {
+      state.history = state.history.filter(item => item.id !== plan.id);
+      if (state.currentId === plan.id) { state.currentId = null; renderResult(); }
+      persist(); updateCounts(); renderHistory();
+      notify('已删除这次实验');
+    });
+    const save = element('button', 'secondary', plan.saved ? '★ 已收藏' : '☆ 收藏');
+    save.setAttribute('aria-pressed', String(plan.saved));
+    save.addEventListener('click', () => { plan.saved = !plan.saved; persist(); updateCounts(); updateSaveButton(); renderHistory(); });
+    const open = element('button', 'dark-button', '继续编辑 ↗');
+    open.addEventListener('click', () => {
+      state.currentId = plan.id;
+      updateIdea(plan.idea);
+      state.selected = [...plan.cardIds]; state.count = plan.cardIds.length; state.locked = [];
+      setView('lab'); renderCards(); updateStrength(); renderResult(true); persist();
+    });
+    bottom.append(remove, save, open);
+    card.append(bottom);
+    list.append(card);
+  });
+}
+async function mutate() {
+  if (state.busy) return;
+  let idea;
+  try { idea = validateIdea(state.idea); } catch (error) {
+    $('#input-error').textContent = error.message;
+    $('#input-error').hidden = false;
+    $('#idea').setAttribute('aria-invalid', 'true');
+    $('#idea').focus();
+    return;
+  }
+  if (state.history.length >= 60 && state.history.every(plan => plan.saved)) return notify('60 个位置都已收藏。请先导出并移除一份，再做新实验。');
+  const selected = [...state.selected];
+  state.busy = true;
+  $('#mutate').disabled = true;
+  $('#mutate-label').textContent = '让思路碰撞一下…';
+  $('#mutate').classList.add('processing');
+  animateCards();
+  try {
+    await new Promise(resolve => setTimeout(resolve, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 550));
+    const plan = generatePlan(idea, selected, { variant: state.total });
+    if (state.history.length >= 60) {
+      const evict = state.history.findLastIndex(item => !item.saved);
+      state.history.splice(evict, 1);
+    }
+    state.history.unshift(plan); state.currentId = plan.id; state.total++;
+    persist(); updateCounts(); renderResult(true);
+    notify('新可能已就位，点进文字就能继续改。');
+  } catch (error) { notify(error.message || '这次变异没有完成，请再试一次。'); }
+  finally { state.busy = false; $('#mutate').disabled = false; $('#mutate-label').textContent = '再变异一次'; $('#mutate').classList.remove('processing'); }
+}
+async function copyText(text, message) {
+  try { await navigator.clipboard.writeText(text); notify(message); }
+  catch {
+    $('#copy-fallback').value = text;
+    $('#copy-dialog').showModal();
+    $('#copy-fallback').focus(); $('#copy-fallback').select();
+  }
+}
+function exportPlan(plan) {
+  const url = URL.createObjectURL(new Blob([toMarkdown(plan)], { type: 'text/markdown;charset=utf-8' }));
+  const link = element('a');
+  link.href = url;
+  link.download = `${(plan.title || '灵感变异方案').replace(/[<>:"/\\|?*\x00-\x1f]/g, '').slice(0, 70)}.md`;
+  document.body.append(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  notify('方案已导出为 Markdown');
+}
+
+$('#idea').value = state.idea;
+$('#char-count').textContent = state.idea.length;
+EXAMPLES.forEach(example => {
+  const button = element('button', 'example', example.label);
+  button.addEventListener('click', () => { updateIdea(example.text); $('#idea').focus(); });
+  $('#examples').append(button);
+});
+$('#idea').addEventListener('input', event => updateIdea(event.target.value));
+$('#mutate').addEventListener('click', mutate);
+$('#shuffle').addEventListener('click', () => {
+  if (state.locked.length >= state.count) return notify('这手牌都锁住了，先解锁一张再换。');
+  const previous = state.selected.join(',');
+  for (let attempt = 0; attempt < 12; attempt++) {
+    state.selected = drawCards(state.count, state.locked);
+    if (state.selected.join(',') !== previous) break;
+  }
+  renderCards(); animateCards();
+});
+$('#deck-toggle').addEventListener('click', () => {
+  const expanded = $('#deck-toggle').getAttribute('aria-expanded') !== 'true';
+  $('#deck-toggle').setAttribute('aria-expanded', String(expanded));
+  $('#deck-toggle').lastElementChild.textContent = expanded ? '−' : '＋';
+  $('#deck').hidden = !expanded;
+});
+document.querySelectorAll('[data-count]').forEach(button => button.addEventListener('click', () => {
+  state.count = Number(button.dataset.count);
+  state.locked = state.locked.slice(0, state.count);
+  state.selected = drawCards(state.count, state.locked);
+  updateStrength(); renderCards(); animateCards();
+}));
+document.querySelectorAll('[data-view]').forEach(button => {
+  button.setAttribute('aria-label', button.dataset.view === 'lab' ? '变异实验室' : '灵感收藏夹');
+  button.addEventListener('click', () => setView(button.dataset.view));
+});
+$('.brand').addEventListener('click', event => { event.preventDefault(); setView('lab'); });
+document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
+  state.filter = button.dataset.filter;
+  document.querySelectorAll('[data-filter]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
+  renderHistory();
+}));
+$('#result-title').addEventListener('input', event => { const plan = currentPlan(); if (plan) { plan.title = event.target.value; scheduleSave(); } });
+$('#save').addEventListener('click', () => { const plan = currentPlan(); if (plan) { plan.saved = !plan.saved; persist(); updateCounts(); updateSaveButton(); notify(plan.saved ? '这个可能，已经替你留下了。' : '已取消收藏，实验记录仍在。'); } });
+$('#copy').addEventListener('click', () => { const plan = currentPlan(); if (plan) void copyText(toMarkdown(plan), '方案已复制，随时继续生长。'); });
+$('#export').addEventListener('click', () => { const plan = currentPlan(); if (plan) exportPlan(plan); });
+$('#deepen').addEventListener('click', () => {
+  const plan = currentPlan(); if (!plan) return;
+  const prompt = toPrompt(plan);
+  if (!state.embedded) { void copyText(prompt, '深化提示词已复制，粘贴到 DSH 就能继续。'); return; }
+  if (requestId) return;
+  requestId = crypto.randomUUID();
+  $('#deepen').disabled = true;
+  window.parent.postMessage({ source: 'idea-mutator', type: 'insert-prompt', id: requestId, text: prompt }, '*');
+  bridgeTimer = setTimeout(() => {
+    requestId = null; $('#deepen').disabled = false;
+    notify('DSH 没有响应，已保留方案。请使用复制方案按钮。');
+  }, 4000);
+});
+window.addEventListener('message', event => {
+  if (event.source !== window.parent || window.parent === window || event.data?.source !== 'idea-mutator-host') return;
+  if (event.data.type === 'init') {
+    state.embedded = event.data.canInsert === true;
+    $('#environment').textContent = 'DSH 插件模式';
+    $('#deepen').textContent = state.embedded ? '交给 DSH 深化 ↗' : '复制 DSH 深化提示词 ↗';
+  }
+  if (event.data.type === 'insert-result' && requestId && event.data.id === requestId) {
+    clearTimeout(bridgeTimer); requestId = null; $('#deepen').disabled = false;
+    notify(event.data.ok ? '提示词已放进 DSH 草稿，检查后发送即可。' : '当前草稿已变化或不可编辑。请复制方案后粘贴到 DSH。');
+  }
+});
+if (window.parent !== window) window.parent.postMessage({ source: 'idea-mutator', type: 'ready' }, '*');
+
+const dropzone = $('#dropzone');
+let dragDepth = 0;
+dropzone.addEventListener('dragenter', event => { event.preventDefault(); dragDepth++; dropzone.classList.add('dragging'); });
+dropzone.addEventListener('dragover', event => { event.preventDefault(); event.dataTransfer.dropEffect = 'copy'; });
+dropzone.addEventListener('dragleave', () => { dragDepth--; if (dragDepth <= 0) dropzone.classList.remove('dragging'); });
+dropzone.addEventListener('drop', async event => {
+  event.preventDefault(); dragDepth = 0; dropzone.classList.remove('dragging');
+  try {
+    let text;
+    if (event.dataTransfer.files.length) {
+      if (event.dataTransfer.files.length > 1) throw new Error('一次先放进一个文件，让想法保持专注。');
+      const file = event.dataTransfer.files[0];
+      if (!/\.(txt|md|markdown)$/i.test(file.name)) throw new Error('请拖入 .txt 或 .md 文字文件。');
+      if (file.size > 32768) throw new Error('文件太大了，请先提炼成 1600 字以内的想法。');
+      text = await file.text();
+    } else text = event.dataTransfer.getData('text/plain');
+    updateIdea(validateIdea(text));
+    notify('想法已放入实验室');
+  } catch (error) { notify(error.message || '文件没有读进来，请再试一次。'); }
+});
+document.addEventListener('keydown', event => {
+  if ((event.metaKey || event.ctrlKey) && event.key === 'Enter' && !event.isComposing && state.view === 'lab' && !$('#copy-dialog').open) { event.preventDefault(); void mutate(); }
+});
+window.addEventListener('pagehide', persist);
+document.addEventListener('visibilitychange', () => { if (document.hidden) persist(); });
+renderCards(); updateCounts(); renderResult();
+if (!storageAvailable) $('#autosave').textContent = '本地保存不可用，请复制或导出方案';
+</script>
+</body>
+</html>

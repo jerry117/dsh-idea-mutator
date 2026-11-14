@@ -1,0 +1,11 @@
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('../', import.meta.url));
+const read = path => readFile(root + path, 'utf8');
+const [template, css, engine, app, client] = await Promise.all(['src/index.html', 'src/style.css', 'src/engine.js', 'src/app.js', 'src/client.cjs'].map(read));
+const inlineScript = `${engine.replace(/^export /gm, '')}\n${app.replace(/^import .*?;\n/gm, '')}`.replace(/<\/script/gi, '<\\/script');
+const html = template.replace('<!-- STYLE -->', `<style>${css}</style>`).replace('<!-- SCRIPT -->', `<script type="module">${inlineScript}</script>`);
+await mkdir(root + 'lib', { recursive: true });
+await writeFile(root + 'lib/index.html', html);
+await writeFile(root + 'lib/client.js', `window.__ModuleLoader__.load({ id: 'dsh-idea-mutator', factory: (require) => {\nconst APP_HTML = ${JSON.stringify(html)};\n${client}\nreturn { name: 'idea-mutator', inject: ['slots'], apply };\n} });\n`);
+console.log('Built standalone app and DSH client bundle. No external assets or build dependencies.');

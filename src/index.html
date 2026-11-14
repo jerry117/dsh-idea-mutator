@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>灵感变异机 · 给想法一点意外</title>
+  <!-- STYLE -->
+</head>
+<body>
+  <aside class="rail" aria-label="主导航">
+    <a class="brand" href="#" aria-label="灵感变异机首页"><span class="brand-symbol">m<span>✳</span></span><span class="brand-word">MUTANT<br><small>IDEA LAB</small></span></a>
+    <div class="rail-caption">你的灵感实验室</div>
+    <button class="nav-item active" data-view="lab"><span class="nav-icon">⚗</span> 变异实验室 <span class="nav-arrow">↗</span></button>
+    <button class="nav-item" data-view="collection"><span class="nav-icon">▧</span> 灵感收藏夹 <span id="saved-count" class="count">0</span></button>
+    <div class="rail-note"><div class="tiny-star">✳</div><p>好点子不是等来的，<br>是碰撞出来的。</p><div class="note-line"></div><small>KEEP IT WEIRD.<br>MAKE IT REAL.</small></div>
+    <div class="rail-bottom"><span class="status-dot"></span><span id="environment">本地实验模式</span><span class="version">v0.1</span></div>
+  </aside>
+  <main>
+    <header class="topbar"><span class="breadcrumb">工作台 <span>/</span> <strong id="page-label">变异实验室</strong></span><span class="top-label"><span class="status-dot"></span> 给想法留一点可能性 <span class="top-star">✳</span></span></header>
+    <div class="page" id="lab-view">
+      <section class="hero">
+        <div class="hero-copy"><div class="eyebrow"><span></span> A LITTLE CHAOS. A BETTER IDEA.</div><h1>让好想法，<br>发生一点<span class="accent-word">意外<svg viewBox="0 0 150 13" aria-hidden="true"><path d="M3 9 Q65 0 145 6 M28 12 Q86 5 127 9"/></svg></span>。</h1><p>放进一个想法，抽几张变异卡。<br>看看它能长成什么不一样的东西。</p></div>
+        <div class="hero-art" aria-hidden="true"><span class="art-orbit"></span><span class="art-cross">+</span><div class="art-card art-back"><span>WHAT IF?</span><b>↶</b><small>换个角度，再来一次</small></div><div class="art-card art-front"><span>IDEA MUTATION / 001</span><b>✳</b><small>一点意外，无限可能 ↗</small></div><span class="art-spark">✧</span><span class="art-caption">a happy accident ↗</span></div>
+      </section>
+      <section class="workbench" aria-label="灵感变异工作台">
+        <div class="idea-panel panel">
+          <div class="section-title"><span class="step">01</span><h2>先放进一个想法</h2><span class="title-tail">THE SEED</span></div>
+          <label class="sr-only" for="idea">你的原始想法</label>
+          <div id="dropzone" class="input-wrap"><textarea id="idea" maxlength="1600" placeholder="想做点什么？一个产品、一个玩法，&#10;或者一个还没想清楚的念头…" spellcheck="false"></textarea><div class="input-foot"><span id="drop-label">↳ 也可以拖入文字或 .txt / .md 文件</span><span><b id="char-count">0</b> / 1600</span></div></div>
+          <div class="examples"><span>试试这些</span><div id="examples"></div></div>
+          <div class="input-divider"></div>
+          <div class="strength-row"><div><h3>今天想冒多大的险？</h3><p id="strength-description">三种思路碰撞，看看会发生什么。</p></div><div class="strength" role="group" aria-label="抽卡数量"><button data-count="1" aria-pressed="false">微变</button><button data-count="2" aria-pressed="false">跨界</button><button data-count="3" class="active" aria-pressed="true">脑洞</button></div></div>
+          <button id="mutate" class="primary"><span class="button-star">✳</span><span id="mutate-label">开始变异</span><span class="button-arrow">↗</span></button>
+          <div class="action-hint"><span>本地规则生成 · 不消耗 Token</span><kbd>⌘ / Ctrl ↵</kbd></div>
+          <p id="input-error" class="error" role="alert" hidden></p>
+        </div>
+        <div class="cards-panel panel">
+          <div class="section-title"><span class="step">02</span><h2>给想法加点变量</h2><button id="shuffle" class="text-button" title="保留锁定卡，重新抽取其余卡">⤨ 换一手</button></div>
+          <div class="cards-helper"><span>点击卡牌锁定，留下你喜欢的意外。</span><span id="card-count">3 张配方</span></div>
+          <div id="cards" class="cards" aria-label="当前变异卡"></div>
+          <button id="deck-toggle" class="deck-toggle" aria-expanded="false"><span>▦ 查看全部 12 张变异卡</span><span>＋</span></button>
+          <div id="deck" class="deck" hidden></div>
+          <div class="recipe-note"><span>✧</span><p>没有标准答案。<br><strong>只有还没试过的打开方式。</strong></p><span class="recipe-line">↗</span></div>
+        </div>
+      </section>
+      <section id="result" class="result-panel panel" aria-labelledby="result-heading" hidden>
+        <div class="result-top"><div class="section-title"><span class="step">03</span><h2 id="result-heading">一个新的可能</h2><span class="draft-badge">规则草案 · 可编辑</span></div><button id="save" class="secondary" aria-pressed="false">☆ 收藏方案</button></div>
+        <div id="result-recipe" class="result-recipe"></div>
+        <label class="sr-only" for="result-title">方案标题</label><input id="result-title" class="result-title" maxlength="120" aria-label="方案标题">
+        <div id="result-fields" class="result-fields"></div>
+        <div class="result-bottom"><span id="autosave">修改自动保存在当前浏览器</span><div class="result-actions"><button id="copy" class="secondary">复制方案</button><button id="export" class="secondary">↓ 导出 .md</button><button id="deepen" class="dark-button">复制 DSH 深化提示词 ↗</button></div></div>
+      </section>
+      <div class="lab-footer"><span><span class="status-dot"></span> <b id="mutation-count">0</b> 次意外，正在发生</span><span>小小的念头，也值得一次实验。 <span class="footer-spark">✳</span></span></div>
+    </div>
+    <div class="page collection-view" id="collection-view" hidden>
+      <div class="eyebrow"><span></span> KEEP THE GOOD ONES.</div><h1>把可能，留下来。</h1><p class="collection-subtitle">收藏喜欢的方向，也随时回到之前的实验。</p>
+      <div class="collection-tabs" role="group" aria-label="记录筛选"><button class="active" data-filter="saved" aria-pressed="true">我的收藏 <span id="collection-count">0</span></button><button data-filter="all" aria-pressed="false">全部实验 <span id="history-count">0</span></button></div>
+      <div id="history-list" class="history-list"></div>
+    </div>
+    <footer class="page-footer"><span>✳ MUTANT IDEA LAB</span><span>MADE FOR YOUR NEXT “WHAT IF”.</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="copy-dialog"><form method="dialog"><div class="section-title"><h2>手动复制</h2><button class="secondary" aria-label="关闭">×</button></div><p>浏览器暂时无法写入剪贴板，请选择下面的文字复制。</p><textarea id="copy-fallback" readonly aria-label="待复制的文字"></textarea><button class="dark-button">完成</button></form></dialog>
+  <!-- SCRIPT -->
+</body>
+</html>
