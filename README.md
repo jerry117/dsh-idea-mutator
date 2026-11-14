@@ -55,7 +55,7 @@ npm pack
 npx @deepseek-ai/dsh plugin --profile web add "/path/to/dsh-idea-mutator/dsh-idea-mutator-0.1.0.tgz"
 ```
 
-本插件按 2026-11-14 读取的 DSH 官方客户端模块契约实现：`dsh.client`、`./client`、`window.__ModuleLoader__`、`conversation.input.dock`、`InputActions.captureInsertion/insertText`。开发机器未安装 DSH，尚未完成真实 DSH 宿主中的加载与交接验证。插件层已有加载器/Slot 注册及草稿交接契约测试。
+本插件按 2026-11-14 读取的 DSH 官方客户端模块契约实现：`dsh.client`、`./client`、`window.__ModuleLoader__`、`conversation.input.dock`、`InputActions.captureInsertion/insertText`。尚未完成真实 DSH 宿主中的加载与交接验证；插件层已有加载器/Slot 注册及草稿交接契约测试。
 
 官方契约参考：[客户端模块](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/client/modules/README.md)、[输入动作定义](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/client/ui-conversation/src/client/contract/input.ts)、[插件声明实例](https://github.com/Nagi-ovo/dsh-ads/blob/main/package.json)。DSH 目前仍在演进，宿主升级后需要检查这些接口。
 
