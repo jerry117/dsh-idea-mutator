@@ -52,8 +52,24 @@ npx @deepseek-ai/dsh plugin --profile web add github:jerry117/dsh-idea-mutator
 
 ```sh
 npm pack
-npx @deepseek-ai/dsh plugin --profile web add "/path/to/dsh-idea-mutator/dsh-idea-mutator-0.1.0.tgz"
+npx @deepseek-ai/dsh plugin --profile web add "/path/to/dsh-idea-mutator/jerry117-dsh-idea-mutator-0.1.0.tgz"
 ```
+
+### GitHub Packages
+
+GitHub npm 包名为 `@jerry117/dsh-idea-mutator`，关联本仓库。
+
+GitHub Packages 的 npm registry 在下载公开包时也要求认证。先按照 [GitHub 官方说明](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry) 使用具有 `read:packages` 权限的个人访问令牌（classic）登录；不要将令牌提交到仓库或填入聊天。
+
+```sh
+npm login --scope=@jerry117 --auth-type=legacy --registry=https://npm.pkg.github.com
+npm config set @jerry117:registry https://npm.pkg.github.com
+npm install @jerry117/dsh-idea-mutator@0.1.0
+```
+
+DSH 需要能读取相同的 npm registry 和认证配置，才可通过包名安装。若只想安装插件，推荐使用 [Release 安装包](https://github.com/jerry117/dsh-idea-mutator/releases/tag/v0.1.0)，无需 GitHub Packages 认证。
+
+维护者可在 Actions 中手动运行 **Publish GitHub Package**，或发布后续 Release 来触发构建、测试和发布。发布前更新 `package.json` 的版本号；同一版本不能覆盖发布。
 
 本插件按 2026-11-14 读取的 DSH 官方客户端模块契约实现：`dsh.client`、`./client`、`window.__ModuleLoader__`、`conversation.input.dock`、`InputActions.captureInsertion/insertText`。尚未完成真实 DSH 宿主中的加载与交接验证；插件层已有加载器/Slot 注册及草稿交接契约测试。
 

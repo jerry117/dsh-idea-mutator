@@ -8,7 +8,9 @@ test('host half has no privileged operations', () => assert.doesNotThrow(() => h
 test('built bundle registers lazily and attaches to the documented composer slot', () => {
   let definition;
   runInNewContext(readFileSync(new URL('../lib/client.js', import.meta.url), 'utf8'), { window: { __ModuleLoader__: { load(value) { definition = value; } } } });
-  assert.equal(definition.id, 'dsh-idea-mutator');
+  const manifest = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  assert.equal(definition.id, manifest.name);
+  assert.ok(readFileSync(new URL('../cordis.patch.yml', import.meta.url), 'utf8').includes(`name: '${manifest.name}'`));
   const plugin = definition.factory(name => {
     assert.ok(['react', 'react-dom'].includes(name));
     return name === 'react' ? { createElement() {}, useState() {}, useRef() {}, useEffect() {} } : { createPortal() {} };

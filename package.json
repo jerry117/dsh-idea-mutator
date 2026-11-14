@@ -1,5 +1,5 @@
 {
-  "name": "dsh-idea-mutator",
+  "name": "@jerry117/dsh-idea-mutator",
   "version": "0.1.0",
   "description": "灵感变异机：抽取思维卡，把一个想法变成可编辑、可验证的新方案。",
   "type": "module",
@@ -12,6 +12,7 @@
   "repository": { "type": "git", "url": "git+https://github.com/jerry117/dsh-idea-mutator.git" },
   "homepage": "https://github.com/jerry117/dsh-idea-mutator#readme",
   "bugs": { "url": "https://github.com/jerry117/dsh-idea-mutator/issues" },
+  "publishConfig": { "registry": "https://npm.pkg.github.com" },
   "license": "MIT",
   "dsh": { "bundle": { "patch": "./cordis.patch.yml" }, "client": { "platform": "web" } }
 }
