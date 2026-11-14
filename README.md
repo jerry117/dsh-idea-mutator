@@ -4,7 +4,7 @@
 
 输入一个点子，抽取 1–3 张变异卡，把“反着做”“预算砍九成”“变成游戏”等思路组合成可编辑的实验方案。卡牌可以锁定和手选；方案支持收藏、历史恢复、Markdown 导出，以及向 DSH 当前会话插入深化提示词。
 
-![灵感变异机桌面界面](docs/preview.png)
+![灵感变异机桌面界面](https://raw.githubusercontent.com/jerry117/dsh-idea-mutator/0b0f52fe1faa6611232a97ea3725c01cce36e4d3/docs/preview.png)
 
 ## 立即试玩
 
@@ -52,7 +52,7 @@ npx @deepseek-ai/dsh plugin --profile web add github:jerry117/dsh-idea-mutator
 
 ```sh
 npm pack
-npx @deepseek-ai/dsh plugin --profile web add "/path/to/dsh-idea-mutator/jerry117-dsh-idea-mutator-0.1.0.tgz"
+npx @deepseek-ai/dsh plugin --profile web add "/path/to/dsh-idea-mutator/jerry117-dsh-idea-mutator-0.1.1.tgz"
 ```
 
 ### GitHub Packages
@@ -64,7 +64,7 @@ GitHub Packages 的 npm registry 在下载公开包时也要求认证。先按�
 ```sh
 npm login --scope=@jerry117 --auth-type=legacy --registry=https://npm.pkg.github.com
 npm config set @jerry117:registry https://npm.pkg.github.com
-npm install @jerry117/dsh-idea-mutator@0.1.0
+npm install @jerry117/dsh-idea-mutator@0.1.1
 ```
 
 DSH 需要能读取相同的 npm registry 和认证配置，才可通过包名安装。若只想安装插件，推荐使用 [Release 安装包](https://github.com/jerry117/dsh-idea-mutator/releases/tag/v0.1.0)，无需 GitHub Packages 认证。

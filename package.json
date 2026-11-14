@@ -1,11 +1,11 @@
 {
   "name": "@jerry117/dsh-idea-mutator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "灵感变异机：抽取思维卡，把一个想法变成可编辑、可验证的新方案。",
   "type": "module",
   "main": "./src/index.js",
   "exports": { ".": "./src/index.js", "./client": "./lib/client.js", "./package.json": "./package.json", "./cordis.patch.yml": "./cordis.patch.yml" },
-  "files": ["src", "lib", "scripts", "test", "cordis.patch.yml", "README.md", "LICENSE"],
+  "files": ["src", "lib", "scripts", "test", "docs/preview.png", "cordis.patch.yml", "README.md", "LICENSE"],
   "scripts": { "build": "node scripts/build.mjs", "dev": "node scripts/serve.mjs", "test": "node --test", "test:browser": "node scripts/check-browser.mjs", "prepack": "npm run build" },
   "engines": { "node": ">=22" },
   "keywords": ["dsh-plugin", "deepseek-harness", "creativity", "ideation"],
